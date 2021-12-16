@@ -22,12 +22,12 @@ public class BookService {
 
     public List<Book> getBooksData(){
 
-        List<Book> books = jdbcTemplate.query("SELECT b.id,a.author,b.title,b.price,b.price_old as priceOld FROM books b JOIN authors a ON a.id=b.author_id", (ResultSet rs, int rownum)->{
+        List<Book> books = jdbcTemplate.query("SELECT * FROM books", (ResultSet rs, int rownum)->{
             Book book = new Book();
             book.setId(rs.getInt("id"));
             book.setAuthor(rs.getString("author"));
             book.setTitle(rs.getString("title"));
-            book.setPriceOld(rs.getInt("priceOld"));
+            book.setPriceOld(rs.getInt("price_old"));
             book.setPrice(rs.getInt("price"));
             return book;
         });

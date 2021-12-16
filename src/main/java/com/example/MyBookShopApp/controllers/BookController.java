@@ -1,27 +1,19 @@
 package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.data.Book;
-import com.example.MyBookShopApp.data.service.AuthorService;
 import com.example.MyBookShopApp.data.service.BookService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class MainPageController {
+public class BookController {
 
     private final BookService bookService;
-    private final AuthorService authorService;
 
     @ModelAttribute("recommendedBooks")
     public List<Book> recommendedBooks(){
@@ -29,11 +21,13 @@ public class MainPageController {
     }
 
 
-    @GetMapping("/")
-    public String mainPage(){
-        return "/index";
+    @GetMapping("/books/recent")
+    public String recentPage(){
+        return "/books/recent";
     }
 
-
-
+    @GetMapping("/books/popular")
+    public String popularPage(){
+        return "/books/popular";
+    }
 }
