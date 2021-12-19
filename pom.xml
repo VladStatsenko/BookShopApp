@@ -13,9 +13,21 @@
     <version>0.0.1-SNAPSHOT</version>
     <name>MyBookShopApp</name>
     <description>Demo project for Spring Boot</description>
-    <properties>
-        <java.version>17</java.version>
-    </properties>
+        <properties>
+            <!-- liquibase -->
+            <maven.compiler.source>17</maven.compiler.source>
+            <maven.compiler.target>17</maven.compiler.target>
+            <liquibase-plugin.version>3.6.1</liquibase-plugin.version>
+            <liquibase.changelog>db.changelog-master.xml</liquibase.changelog>
+            <liquibase.host>localhost</liquibase.host>
+            <liquibase.port>5432</liquibase.port>
+            <liquibase.db>postgres</liquibase.db>
+            <liquibase.schema>bookshop</liquibase.schema>
+            <liquibase.user>postgres</liquibase.user>
+            <liquibase.password>password</liquibase.password>
+            <timestamp>${maven.build.timestamp}</timestamp>
+            <maven.build.timestamp.format>yyyyMMdd-HHmmssSSS</maven.build.timestamp.format>
+        </properties>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -25,14 +37,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jdbc</artifactId>
-		</dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -50,6 +54,39 @@
             <version>1.18.22</version>
             <scope>provided</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.2.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-envers</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jpamodelgen</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-maven-plugin</artifactId>
+            <version>4.4.2</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -58,6 +95,23 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${project.parent.version}</version>
+            </plugin>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.4.2</version>
+                <configuration>
+                    <outputFileEncoding>UTF-8</outputFileEncoding>
+                    <driver>org.postgresql.Driver</driver>
+                    <url>
+                        jdbc:postgresql://localhost:5432/postgres?currentSchema=bookshop
+                    </url>
+                    <username>postgres</username>
+                    <password>password</password>
+                    <changeLogFile>db.changelog-master.xml</changeLogFile>
+                    <changelogSchemaName>bookshop</changelogSchemaName>
+                    <promptOnNonLocalDatabase>false</promptOnNonLocalDatabase>
+                </configuration>
             </plugin>
         </plugins>
     </build>

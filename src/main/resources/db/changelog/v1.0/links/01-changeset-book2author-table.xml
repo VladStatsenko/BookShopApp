@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="1" author="Vlad Stastenko">
+        <createTable tableName="book2author">
+            <column name="id" type="bigint"
+                    autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="book_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="book.id"/>
+            </column>
+            <column name="author_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="author.id"/>
+            </column>
+            <column name="sort_index" type="INT" defaultValue="0">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

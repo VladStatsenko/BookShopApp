@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="1" author="Vlad Stastenko">
+        <createTable tableName="book_review_like">
+            <column name="id" type="bigint"
+                    autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="review_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="review.id"/>
+            </column>
+            <column name="user_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="user.id"/>
+            </column>
+            <column name="time" type="DATETIME" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="value" type="TINYINT" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,30 @@
+server:
+  port: 8085
+
+spring:
+  messages:
+    basename: lang.messages
+  web:
+    resources:
+      static-locations: classpath:/spring-frontend
+  thymeleaf:
+    prefix: classpath:/spring-frontend/
+
+spring.datasource.driver-class-name: org.postgresql.Driver
+spring.datasource.url: jdbc:postgresql://localhost:5432/postgres?currentSchema=bookshop?createDatabaseIfNotExist=true
+spring.datasource.username: postgres
+spring.datasource.password: password
+
+spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation: true
+spring.jpa.database-platform: org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.dll-auto: validate
+spring.jpa.show-sql: true
+
+spring.liquibase:
+  enabled: true
+  drop-first: false
+  parameters:
+    schema: bookshop
+  default-schema: bookshop
+  liquibase-schema: bookshop
+  changeLog: classpath:db/changelog/db.changelog-master.xml

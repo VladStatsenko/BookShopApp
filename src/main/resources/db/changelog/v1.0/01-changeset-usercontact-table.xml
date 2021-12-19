@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="1" author="Vlad Stastenko">
+        <sql>CREATE TYPE contact_type AS ENUM ('PHONE','EMAIL')</sql>
+        <createTable tableName="user_contact">
+            <column name="id" type="bigint"
+                    autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="user.id"/>
+            </column>
+            <column name="type" type="contact_type" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="approved" type="TINYINT" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="code" type="VARCHAR(250)"/>
+            <column name="code_trials" type="INT"/>
+            <column name="code_time" type="DATETIME"/>
+            <column name="contact" type="VARCHAR(250)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+</databaseChangeLog>

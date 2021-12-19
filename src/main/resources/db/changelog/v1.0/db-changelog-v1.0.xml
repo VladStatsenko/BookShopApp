@@ -1,0 +1,26 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+    <include file="01-changeset-book-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-author-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-document-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-genre-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-faq-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-user-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-usercontact-table.xml" relativeToChangelogFile="true"/>
+    <include file="file/01-changeset-bookfile-table.xml" relativeToChangelogFile="true"/>
+    <include file="file/01-changeset-bookfiletype-table.xml" relativeToChangelogFile="true"/>
+    <include file="file/01-changeset-filedownload-table.xml" relativeToChangelogFile="true"/>
+    <include file="links/01-changeset-book2author-table.xml" relativeToChangelogFile="true"/>
+    <include file="links/01-changeset-book2genre-table.xml" relativeToChangelogFile="true"/>
+    <include file="links/01-changeset-book2user-table.xml" relativeToChangelogFile="true"/>
+    <include file="links/01-changeset-book2usertype-table.xml" relativeToChangelogFile="true"/>
+    <include file="payments/01-changeset-balancetransaction-table.xml" relativeToChangelogFile="true"/>
+    <include file="review/01-changeset-bookreview-table.xml" relativeToChangelogFile="true"/>
+    <include file="review/01-changeset-bookreviewlike-table.xml" relativeToChangelogFile="true"/>
+    <include file="review/01-changeset-message-table.xml" relativeToChangelogFile="true"/>
+
+
+</databaseChangeLog>
