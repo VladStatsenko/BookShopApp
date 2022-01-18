@@ -9,11 +9,13 @@
     <include file="01-changeset-genre-table.xml" relativeToChangelogFile="true"/>
     <include file="01-changeset-faq-table.xml" relativeToChangelogFile="true"/>
     <include file="01-changeset-user-table.xml" relativeToChangelogFile="true"/>
+    <include file="01-changeset-tag-table.xml" relativeToChangelogFile="true"/>
     <include file="01-changeset-usercontact-table.xml" relativeToChangelogFile="true"/>
     <include file="file/01-changeset-bookfile-table.xml" relativeToChangelogFile="true"/>
     <include file="file/01-changeset-bookfiletype-table.xml" relativeToChangelogFile="true"/>
     <include file="file/01-changeset-filedownload-table.xml" relativeToChangelogFile="true"/>
     <include file="links/01-changeset-book2author-table.xml" relativeToChangelogFile="true"/>
+    <include file="links/01-changeset-book2tag-table.xml" relativeToChangelogFile="true"/>
     <include file="links/01-changeset-book2genre-table.xml" relativeToChangelogFile="true"/>
     <include file="links/01-changeset-book2user-table.xml" relativeToChangelogFile="true"/>
     <include file="links/01-changeset-book2usertype-table.xml" relativeToChangelogFile="true"/>

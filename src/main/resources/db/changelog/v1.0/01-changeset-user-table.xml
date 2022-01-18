@@ -21,6 +21,20 @@
             </column>
             <column name="name" type="VARCHAR(250)"/>
         </createTable>
+        <insert tableName="user">
+            <column name="id" value="1"/>
+            <column name="hash" value="1212432"/>
+            <column name="reg_time" value="2020-1-1"/>
+            <column name="balance" value="2000"/>
+            <column name="name" value="Vlod"/>
+        </insert>
+        <insert tableName="user">
+            <column name="id" value="2"/>
+            <column name="hash" value="12132432"/>
+            <column name="reg_time" value="2000-1-1"/>
+            <column name="balance" value="2000"/>
+            <column name="name" value="Vlod"/>
+        </insert>
     </changeSet>
 
 

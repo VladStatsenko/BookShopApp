@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+
+
+    <changeSet id="1" author="Vlad Stastenko">
+        <createTable tableName="book2tag">
+            <column name="book_id" type="int">
+                <constraints nullable="false" deleteCascade="true"/>
+            </column>
+            <column name="tag_id" type="int">
+                <constraints nullable="false" deleteCascade="true"/>
+            </column>
+        </createTable>
+        <addForeignKeyConstraint constraintName="fk_book"
+                                 baseTableName="book2tag" baseColumnNames="book_id"
+                                 referencedTableName="book" referencedColumnNames="id" deleteCascade="true"/>
+        <addForeignKeyConstraint constraintName="fk_tag"
+                                 baseTableName="book2tag" baseColumnNames="tag_id"
+                                 referencedTableName="tag" referencedColumnNames="id" deleteCascade="true"/>
+        <insert tableName="book2tag">
+            <column name="book_id" value="1"/>
+            <column name="tag_id" value="1"/>
+        </insert>
+    </changeSet>
+
+
+</databaseChangeLog>

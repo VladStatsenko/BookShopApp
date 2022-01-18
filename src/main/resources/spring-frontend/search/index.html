@@ -50,7 +50,7 @@
         <div class="Section">
           <div class="search">
             <form class="form form_search" action="#" method="post" data-searchlimit="20">
-              <input class="search-input" id="querypage" name="querypage" type="text" placeholder="Search over 30 million book titles" value="Техника"/>
+              <input class="search-input" id="querypage" name="querypage" type="text" placeholder="Search over 30 million book titles" th:value="${searchDto.example}" value="Техника"/>
               <button class="search-button" type="submit" name="searchpage" id="searchpage">Поиск
               </button>
             </form>
@@ -334,7 +334,7 @@
                 </div>
               </div>
             </div>
-            <div class="Cards-footer Cards-footer_center"><a class="btn btn_primary" href="#" data-refreshshow="search" data-refreshoffset="20" data-refreshlimit="20" data-refreshquery="Техника">Показать еще</a>
+            <div class="Cards-footer Cards-footer_center"><a class="btn btn_primary" href="#" data-refreshshow="search" data-refreshoffset="20" data-refreshlimit="20" data-refreshquery="Техника" th:attr="data-refreshquery=${searchDto.example}">Показать еще</a>
             </div>
           </div>
         </div>

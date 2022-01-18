@@ -18,4 +18,8 @@ public class AuthorService {
     public Map<String, List<Author>> getAuthorMap(){
         return authorRepository.findAll().stream().collect(Collectors.groupingBy((Author a)->{return a.getName().substring(0,0);}));
     }
+
+    public Author getAuthorById(int id){
+        return authorRepository.getById(id);
+    }
 }

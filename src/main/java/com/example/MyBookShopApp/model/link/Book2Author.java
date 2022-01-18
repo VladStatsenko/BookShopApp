@@ -8,10 +8,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 
 @Entity
-@Table(name = "book2author")
+@Table(schema = "bookshop",name = "book2author")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

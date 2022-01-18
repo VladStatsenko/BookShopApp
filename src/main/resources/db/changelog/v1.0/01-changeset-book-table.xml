@@ -33,34 +33,90 @@
         </createTable>
         <insert tableName="book">
             <column name="id" value="1"/>
-            <column name="pub_date" value="2020-1-1"/>
+            <column name="pub_date" value="2019-1-1"/>
             <column name="is_bestseller" value="1"/>
             <column name="slug" value="Some text"/>
-            <column name="title" value="title"/>
-            <column name="image" value="Image"/>
-            <column name="description" value="desc"/>
+            <column name="title" value="1 book"/>
+            <column name="image" value="http://dummyimage.com/187x100.png/dddddd/000000
+"/>
+            <column name="description" value="desci"/>
             <column name="price" value="100"/>
             <column name="discount" value="0"/>
         </insert>
         <insert tableName="book">
             <column name="id" value="2"/>
-            <column name="pub_date" value="2020-1-1"/>
+            <column name="pub_date" value="2018-1-1"/>
             <column name="is_bestseller" value="1"/>
             <column name="slug" value="Some text"/>
-            <column name="title" value="title"/>
-            <column name="image" value="Image"/>
-            <column name="description" value="desc"/>
+            <column name="title" value="2 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
             <column name="price" value="100"/>
             <column name="discount" value="0"/>
         </insert>
         <insert tableName="book">
             <column name="id" value="3"/>
-            <column name="pub_date" value="2020-1-1"/>
+            <column name="pub_date" value="2017-1-1"/>
             <column name="is_bestseller" value="1"/>
             <column name="slug" value="Some text"/>
-            <column name="title" value="title"/>
-            <column name="image" value="Image"/>
-            <column name="description" value="desc"/>
+            <column name="title" value="3 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
+            <column name="price" value="100"/>
+            <column name="discount" value="0"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="4"/>
+            <column name="pub_date" value="2016-1-1"/>
+            <column name="is_bestseller" value="1"/>
+            <column name="slug" value="Some text"/>
+            <column name="title" value="4 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
+            <column name="price" value="100"/>
+            <column name="discount" value="0"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="5"/>
+            <column name="pub_date" value="2015-1-1"/>
+            <column name="is_bestseller" value="1"/>
+            <column name="slug" value="Some text"/>
+            <column name="title" value="5 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
+            <column name="price" value="100"/>
+            <column name="discount" value="0"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="6"/>
+            <column name="pub_date" value="2014-1-1"/>
+            <column name="is_bestseller" value="1"/>
+            <column name="slug" value="Some text"/>
+            <column name="title" value="6 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
+            <column name="price" value="100"/>
+            <column name="discount" value="0"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="7"/>
+            <column name="pub_date" value="2013-1-1"/>
+            <column name="is_bestseller" value="1"/>
+            <column name="slug" value="Some text"/>
+            <column name="title" value="7 book"/>
+            <column name="image" value="mage"/>
+            <column name="description" value="desci"/>
+            <column name="price" value="100"/>
+            <column name="discount" value="0"/>
+        </insert>
+        <insert tableName="book">
+            <column name="id" value="8"/>
+            <column name="pub_date" value="2020-3-1"/>
+            <column name="is_bestseller" value="1"/>
+            <column name="slug" value="Some text"/>
+            <column name="title" value="8 book"/>
+            <column name="image" value="http://dummyimage.com/187x100.png/dddddd/000000"/>
+            <column name="description" value="desci"/>
             <column name="price" value="100"/>
             <column name="discount" value="0"/>
         </insert>

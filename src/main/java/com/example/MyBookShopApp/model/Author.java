@@ -1,9 +1,8 @@
 package com.example.MyBookShopApp.model;
 
 import com.example.MyBookShopApp.model.link.Book2Author;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -11,8 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "author")
-@Data
+@Table(schema = "bookshop",name = "author")
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Author implements Serializable {
@@ -25,7 +25,8 @@ public class Author implements Serializable {
     private String name;
     private String description;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(fetch = FetchType.LAZY,mappedBy = "author")
+    @JsonIgnore
     private List<Book2Author> books = new ArrayList<>();
 
 }
