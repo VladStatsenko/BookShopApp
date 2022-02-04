@@ -28,3 +28,5 @@ spring.liquibase:
   default-schema: bookshop
   liquibase-schema: bookshop
   changeLog: classpath:db/changelog/db.changelog-master.xml
+
+upload.path: /Users/vladstatsenko/Documents/booksPhoto

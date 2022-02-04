@@ -2,15 +2,19 @@ package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.dto.BookDto;
 import com.example.MyBookShopApp.model.Book;
+import com.example.MyBookShopApp.repository.BookRepository;
 import com.example.MyBookShopApp.service.AuthorService;
 import com.example.MyBookShopApp.service.BookService;
+import com.example.MyBookShopApp.service.StorageService;
 import com.example.MyBookShopApp.service.TagService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -23,6 +27,8 @@ import java.util.List;
 public class BookController {
 
     private final BookService bookService;
+    private final BookRepository bookRepository;
+    private final StorageService storageService;
     private final TagService tagService;
     private final AuthorService authorService;
 
@@ -36,9 +42,19 @@ public class BookController {
         return bookService.getPopularBooks(0,20).getContent();
     }
 
-    @GetMapping("/books/slug")
-    public String slug(){
+    @GetMapping("/books/{slug}")
+    public String slug(@PathVariable("slug") String slug, Model model){
+        model.addAttribute("slugBook", bookService.getBookBySlug(slug));
         return "/books/slug";
+    }
+
+    @PostMapping("books/{slug}/img/save")
+    public String saveBookImage(@RequestParam("file")MultipartFile file, @PathVariable("slug") String slug){
+        String savePath = storageService.saveBookImage(file, slug);
+        Book bookToUpdate = bookService.getBookBySlug(slug);
+        bookToUpdate.setImage(savePath);
+        bookRepository.save(bookToUpdate);
+        return ("redirect:/books/" + slug);
     }
 
     @GetMapping(value = "/books/tag/{id}")
@@ -49,7 +65,7 @@ public class BookController {
 
     @GetMapping("/tags/{tagId:\\d+}")
     public String getTag(@PathVariable Integer tagId, Model model) {
-        model.addAttribute("tagBooks", bookService.getBookByTag(tagId, 0, 5));
+        model.addAttribute("tagBooks", bookService.getBookByTag(tagId, 0, 10));
         model.addAttribute("tag", tagService.getTag(tagId));
         return "tags/index";
     }
@@ -59,7 +75,7 @@ public class BookController {
     public String getRecent(Model model) {
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.MONTH, -1);
-        model.addAttribute("recentBooks", bookService.getRecentBook(calendar.getTime(), new Date(), 0, 5));
+        model.addAttribute("recentBooks", bookService.getRecentBook(calendar.getTime(), new Date(), 0, 10));
         model.addAttribute("dateFrom", calendar.getTime());
         model.addAttribute("dateTo", new Date());
         return "/books/recent";
@@ -70,13 +86,13 @@ public class BookController {
     @SneakyThrows
     @GetMapping("/books/recent/page")
     @ResponseBody
-    public BookDto getNextSearchPage(
+    public ResponseEntity<BookDto> getNextSearchPage(
             @RequestParam("offset") Integer offset,
             @RequestParam("limit") Integer limit,
             @RequestParam(value = "from", defaultValue = "") String from,
             @RequestParam(value = "to", defaultValue = "") String to) {
-        return new BookDto(bookService.getRecentBook(dateFormat.parse(from),
-                dateFormat.parse(to), offset, limit).getContent());
+        return ResponseEntity.ok(new BookDto(bookService.getRecentBook(dateFormat.parse(from),
+                dateFormat.parse(to), offset, limit).getContent()));
     }
 
     @GetMapping("/books/popular")
@@ -87,7 +103,7 @@ public class BookController {
     @GetMapping("books/author/{id}")
     public String allBookByAuthor(@PathVariable Integer id, Model model){
         model.addAttribute("author", authorService.getAuthorById(id));
-        model.addAttribute("authorBooks", bookService.getBookByAuthor(id, 0, 5).getContent());
+        model.addAttribute("authorBooks", bookService.getBookByAuthor(id, 0, 10).getContent());
         return "/books/author";
     }
 }

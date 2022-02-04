@@ -31,4 +31,6 @@ public interface BookRepository extends JpaRepository<Book,Integer> {
 
     @Query("SELECT b FROM Book b JOIN b.genres g WHERE g.id = :id")
     Page<Book> getBookByGenre(@Param("id") int id, Pageable pageable);
+
+    Book findBookBySlug(String slug);
 }

@@ -57,4 +57,8 @@ public class BookService {
         Pageable page = PageRequest.of(offset,limit);
         return bookRepository.getBookByGenre(id,page);
     }
+
+    public Book getBookBySlug(String slug){
+        return bookRepository.findBookBySlug(slug);
+    }
 }
