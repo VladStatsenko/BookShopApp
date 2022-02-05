@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "book_file_type")
+@Table(name = "book_file_type", schema = "bookshop")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

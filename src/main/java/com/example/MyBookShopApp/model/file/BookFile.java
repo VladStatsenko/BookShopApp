@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "book_file")
+@Table(name = "book_file", schema = "bookshop")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

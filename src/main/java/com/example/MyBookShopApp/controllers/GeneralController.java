@@ -29,11 +29,6 @@ public class GeneralController {
         return new ArrayList<>();
     }
 
-    @GetMapping("/cart")
-    public String getCart(){
-        return "/cart";
-    }
-
     @GetMapping("/signin")
     public String signIn(){
         return "/signin";

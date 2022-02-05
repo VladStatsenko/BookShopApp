@@ -64,6 +64,7 @@ public class Book implements Serializable {
     private List<FileDownload> fileDownloads = new ArrayList<>();
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private List<BookFile> bookFiles = new ArrayList<>();
 
     @ManyToMany(mappedBy = "bookList")
