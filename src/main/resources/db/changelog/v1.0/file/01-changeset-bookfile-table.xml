@@ -16,10 +16,34 @@
             <column name="type_id" type="INT" >
                 <constraints nullable="false" foreignKeyName="book_file_type.id"/>
             </column>
+            <column name="book_id" type="INT" >
+                <constraints nullable="false" foreignKeyName="book.id"/>
+            </column>
             <column name="path" type="VARCHAR(250)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <insert tableName="book_file">
+            <column name="id" value="1"/>
+            <column name="hash" value="dsafe11"/>
+            <column name="type_id" value="1"/>
+            <column name="book_id" value="1"/>
+            <column name="path" value="one_book.pdf"/>
+        </insert>
+        <insert tableName="book_file">
+            <column name="id" value="2"/>
+            <column name="hash" value="dsafe12"/>
+            <column name="type_id" value="2"/>
+            <column name="book_id" value="1"/>
+            <column name="path" value="one_book.epub"/>
+        </insert>
+        <insert tableName="book_file">
+            <column name="id" value="3"/>
+            <column name="hash" value="dsafe13"/>
+            <column name="type_id" value="3"/>
+            <column name="book_id" value="1"/>
+            <column name="path" value="one_book.fb2"/>
+        </insert>
     </changeSet>
 
 

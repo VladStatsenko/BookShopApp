@@ -30,3 +30,4 @@ spring.liquibase:
   changeLog: classpath:db/changelog/db.changelog-master.xml
 
 upload.path: /Users/vladstatsenko/Documents/booksPhoto
+download.path: /Users/vladstatsenko/Documents/booksfiles

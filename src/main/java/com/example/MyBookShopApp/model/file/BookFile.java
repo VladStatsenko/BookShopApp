@@ -1,5 +1,6 @@
 package com.example.MyBookShopApp.model.file;
 
+import com.example.MyBookShopApp.model.Book;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "book_file_type")
+@Table(name = "book_file")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,4 +24,8 @@ public class BookFile implements Serializable {
     @ManyToOne
     @JoinColumn(name = "type_id")
     private BookFileType type;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 }

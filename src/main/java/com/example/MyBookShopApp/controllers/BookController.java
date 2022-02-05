@@ -10,12 +10,17 @@ import com.example.MyBookShopApp.service.TagService;
 import io.swagger.annotations.Api;
 import lombok.RequiredArgsConstructor;
 import lombok.SneakyThrows;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -55,6 +60,20 @@ public class BookController {
         bookToUpdate.setImage(savePath);
         bookRepository.save(bookToUpdate);
         return ("redirect:/books/" + slug);
+    }
+
+    @GetMapping("books/download/{hash}")
+    public ResponseEntity<ByteArrayResource> bookFile(@PathVariable("hash") String hash) throws IOException {
+
+        Path path = storageService.getBookFilePath(hash);
+        MediaType mediaType = storageService.getBookFileMime(hash);
+        byte[] data = storageService.getBookFileByteArray(hash);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + path.getFileName().toString())
+                .contentType(mediaType)
+                .contentLength(data.length)
+                .body(new ByteArrayResource(data));
     }
 
     @GetMapping(value = "/books/tag/{id}")

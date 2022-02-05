@@ -15,7 +15,20 @@
             </column>
             <column name="description" type="TEXT"/>
         </createTable>
+        <insert tableName="book_file_type">
+            <column name="id" value="1"/>
+            <column name="name" value="PDF"/>
+            <column name="description" value="pdf format"/>
+        </insert>
+        <insert tableName="book_file_type">
+            <column name="id" value="2"/>
+            <column name="name" value="EPUB"/>
+            <column name="description" value="epub format"/>
+        </insert>
+        <insert tableName="book_file_type">
+            <column name="id" value="3"/>
+            <column name="name" value="FB2"/>
+            <column name="description" value="fb2 format"/>
+        </insert>
     </changeSet>
-
-
 </databaseChangeLog>

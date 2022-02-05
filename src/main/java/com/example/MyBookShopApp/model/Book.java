@@ -1,5 +1,6 @@
 package com.example.MyBookShopApp.model;
 
+import com.example.MyBookShopApp.model.file.BookFile;
 import com.example.MyBookShopApp.model.file.FileDownload;
 import com.example.MyBookShopApp.model.link.Book2Author;
 import com.example.MyBookShopApp.model.link.Book2Genre;
@@ -61,6 +62,9 @@ public class Book implements Serializable {
     @OneToMany(mappedBy = "book")
     @JsonIgnore
     private List<FileDownload> fileDownloads = new ArrayList<>();
+
+    @OneToMany(mappedBy = "book")
+    private List<BookFile> bookFiles = new ArrayList<>();
 
     @ManyToMany(mappedBy = "bookList")
     @JsonIgnore
